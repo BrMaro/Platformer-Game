@@ -50,6 +50,22 @@ class Player {
         }
     }
 }
+
+
+class Platform {
+    constructor(x,y){
+        this.position = { x,y};
+        this.width = 200;
+        this.height = proportionalSize(40);
+    }
+    draw(){
+        ctx.fillStyle = "#acd157";
+        ctx.fillRect(this.position.x,this.position.y,this.width,this.height);
+    }
+
+}
+
+
 const player = new Player();
 
 const startGame = () => {
@@ -75,6 +91,7 @@ const keys = {
     rightKey:{pressed:false},
     leftKey:{pressed:false}
 }
+
 
 const movePlayer = (key,xVelocity,isPressed) => {
     if (!isCheckpointCollisionDetectionActive){
@@ -109,6 +126,7 @@ startBtn.addEventListener('click',startGame);
 window.addEventListener('keydown',({ key }) => {
     movePlayer(key,8,true);
 } )
+
 window.addEventListener("keyup",({ key })=> {
     movePlayer(key,0,false);
 })
