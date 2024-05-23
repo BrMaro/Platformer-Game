@@ -55,7 +55,7 @@ const player = new Player();
 const startGame = () => {
     canvas.style.display = "block";
     startScreen.style.display = "none";
-    player.draw();
+    animate();
 };
 
 const animate = () => {
@@ -106,3 +106,9 @@ const movePlayer = (key,xVelocity,isPressed) => {
 
 
 startBtn.addEventListener('click',startGame);
+window.addEventListener('keydown',({ key }) => {
+    movePlayer(key,8,true);
+} )
+window.addEventListener("keyup",({ key })=> {
+    movePlayer(key,0,false);
+})
